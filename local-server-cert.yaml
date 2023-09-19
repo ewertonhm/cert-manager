@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: apps-cert
+  namespace: apps
+spec:
+  secretName: apps-cert-tls
+  isCA: false
+  usages:
+    - server auth
+    - client auth
+  dnsNames:
+  - "*.local.svc.cluster.local"
+  - "*.cluster.local"
+  issuerRef:
+    name: local-ca-issuer
